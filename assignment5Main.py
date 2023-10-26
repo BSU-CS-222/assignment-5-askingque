@@ -8,7 +8,7 @@ root.geometry("500x500")
 
 def main():
 
-    annualPercentageRate=tk.DoubleVar()
+    annualPercentageRate=tk.DoubleVar() #I don't even know why this is a Tk variable but everything said to do it this way
     years=tk.IntVar()
     price = tk.IntVar()
     downpayment = tk.IntVar()
@@ -53,10 +53,12 @@ def calculate(years, annualPercentageRate, price, downpayment):
     months = years.get() * 12
     interest = annualPercentageRate.get() / 1200
     monthlyPayment = (((price.get() - downpayment.get()) * interest * ((1 + interest) ** months))/(((1 + interest) ** months) - 1))
-    monthlyPayment = round(monthlyPayment, 2)
+
+    monthlyPayment = round(monthlyPayment, 2) #make it not a float
+
     monthlyPaymentDisplay = tk.Label(root, text = monthlyPayment, font=('roman',20, 'bold'))
     monthlyPaymentDisplay.grid(row=5,column=1)
-    return monthlyPayment
 
-if __name__ == "__main__":
-    main()
+    return monthlyPayment #for test
+
+main()
